@@ -10,19 +10,11 @@ int solution(int a, int b, int c, int d) {
     int j = 0;
     int p = 0;
     int min = 0;
-    while (i < 6)
-    {
-        if (a == i + 1)
-            nums[i] = nums[i] + 1;
-        if (b == i + 1)
-            nums[i] = nums[i] + 1;
-        if (c == i + 1)
-            nums[i] = nums[i] + 1;
-        if (d == i + 1)
-            nums[i] = nums[i] + 1;
-        i ++;
-    }
-    i = 0;
+
+    nums[a - 1] ++;
+    nums[b - 1] ++;
+    nums[c - 1] ++;
+    nums[d - 1] ++;
     while (i < 6)
     {
         if (nums[i] == 4)
