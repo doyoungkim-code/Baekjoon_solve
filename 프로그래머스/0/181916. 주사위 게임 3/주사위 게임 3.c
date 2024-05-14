@@ -5,11 +5,7 @@
 
 int solution(int a, int b, int c, int d) {
     int nums[6] = {0, 0, 0, 0, 0, 0};
-    int result = 0;
-    int i = 0;
-    int j = 0;
-    int p = 0;
-    int min = 0;
+    int i = 0, j = 0, p = 0, min = 0;
 
     nums[a - 1] ++;
     nums[b - 1] ++;
@@ -18,10 +14,7 @@ int solution(int a, int b, int c, int d) {
     while (i < 6)
     {
         if (nums[i] == 4)
-        {
-            result = 1111 * (i + 1);
-            break;
-        }
+            return(1111 * (i + 1));
         if (nums[i] == 3)
         {
             while (j < 6)
@@ -30,8 +23,7 @@ int solution(int a, int b, int c, int d) {
                     break;
                 j ++;
             }
-            result = (10 * (i + 1) + (j + 1)) * (10 * (i + 1) + (j + 1));
-            break;
+            return((10 * (i + 1) + (j + 1)) * (10 * (i + 1) + (j + 1)));
         }
         if (nums[i] == 2)
         {
@@ -45,23 +37,16 @@ int solution(int a, int b, int c, int d) {
                     return (p * (j + 1));
                 j ++;
             }
-            result = ((i + 1) + (j + 1)) * abs(i - j);
-            break;
+            return(((i + 1) + (j + 1)) * abs(i - j));
         }
         i ++;
     }
-    if (result == 0)
+    i = 0;
+    while (i < 6)
     {
-        i = 0;
-        while (i < 6)
-        {
-            if(nums[i] == 1)
-            {
-                result = i + 1;
-                break;
-            }
-            i ++;
-        }
+        if(nums[i] == 1)
+            return (i + 1);
+        i ++;
     }
-    return (result);
+    return (0);
 }
