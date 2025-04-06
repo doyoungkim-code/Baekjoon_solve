@@ -4,6 +4,7 @@
 int main(){
     std::stack<int> st;
     int n, cost, sum = 0;
+    std::ios::sync_with_stdio(false);
     std::cin >> n;
     for (int i = 0; i < n; i ++){
         std::cin >> cost;
