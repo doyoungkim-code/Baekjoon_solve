@@ -6,7 +6,7 @@ int main(void){
     while(1){
         int flag = 0;
         std::stack<char> stack;
-        std::string str = "";
+        std::string str;
         std::getline(std::cin, str);
         if (str == ".")
             break ;
