@@ -13,10 +13,10 @@ int main(void){
     }
     for (int i = 0; i < n; i ++){
         next = dq.front();
+        dq.pop_front();
+        std::cout << dq_index.front() << " ";
+        dq_index.pop_front();
         if (next > 0){
-            dq.pop_front();
-            std::cout << dq_index.front() << " ";
-            dq_index.pop_front();
             for (int j = 0; j < next - 1; j ++){
                 dq.push_back(dq.front());
                 dq.pop_front();
@@ -25,9 +25,6 @@ int main(void){
             }
         }
         else {
-            dq.pop_front();
-            std::cout << dq_index.front() << " ";
-            dq_index.pop_front();
             for (int j = 0; j < - next; j ++){
                 dq.push_front(dq.back());
                 dq.pop_back();
