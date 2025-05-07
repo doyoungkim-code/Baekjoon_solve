@@ -22,18 +22,16 @@ void bfs(void)
     while (! q.empty())
     {
         int n = q.front();
-
-        while (! nodes[n].empty())
-        {
-            if (!visited[nodes[n].back()])
-            {
-                result[nodes[n].back()] = ++ cnt;
-                visited[nodes[n].back()] = true;
-                q.push(nodes[n].back());
-            }
-            nodes[n].pop_back();
-        }
         q.pop();
+        for (int i = nodes[n].size() - 1; i >= 0; i --)
+        {
+            if (!visited[nodes[n][i]])
+            {
+                result[nodes[n][i]] = ++ cnt;
+                visited[nodes[n][i]] = true;
+                q.push(nodes[n][i]);
+            }
+        }
     }
 }
 
