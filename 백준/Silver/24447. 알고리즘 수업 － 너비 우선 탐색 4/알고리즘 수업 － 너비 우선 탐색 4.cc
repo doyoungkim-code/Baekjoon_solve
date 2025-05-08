@@ -11,8 +11,8 @@ int N, M, R, a, b, cnt;
 long long result;
 queue <int> q;
 vector <int> nodes[100001];
-long long depth[100001] = {0, };
-long long order[100001] = {0, };
+int depth[100001] = {0, };
+int order[100001] = {0, };
 bool visited[100001] = {false, };
 
 void dfs(void)
@@ -57,7 +57,7 @@ int main(void){
     {
         if (i != R && depth[i] == 0)
             continue ;
-        result = result + (depth[i] * order[i]);
+        result = result + ((long long) depth[i] * (long long) order[i]);
     }
     cout << result;
 }
