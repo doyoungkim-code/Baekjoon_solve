@@ -14,7 +14,6 @@ public class Main {
 	static final int INF = 987654321;
 	
 	static int[] result;
-	static List <List <Edge>> edgeList;
 	
 	static class Edge implements Comparable<Edge>{
 		int to;
@@ -32,7 +31,7 @@ public class Main {
 		}
 	}
 	
-	static int dijkstra(int start, int end) {
+	static int dijkstra(int start, List <List <Edge>> edgeList) {
 		PriorityQueue<Edge> pq = new PriorityQueue<>();
 		boolean[] visited = new boolean[N + 1];
 		int[] minTime = new int[N + 1];
@@ -54,11 +53,6 @@ public class Main {
 			if (visited[to])
 				continue;
 			
-			if (to == end)
-			{
-				return total;
-			}
-			
 			visited[to] = true;
 			
 			for (Edge e : edgeList.get(to))
@@ -76,7 +70,7 @@ public class Main {
 
 		for (int i = 1; i <= N; ++i)
 		{
-			result[i] = minTime[i];
+			result[i] += minTime[i];
 		}
 		return 0;
 	}
@@ -91,9 +85,12 @@ public class Main {
 		X = Integer.parseInt(st.nextToken());
 		
 		result = new int[N + 1];
-		edgeList = new ArrayList<>();
+		List <List <Edge>> edgeList = new ArrayList<>();
+		List <List <Edge>> edgeListReverse = new ArrayList<>();
+		
 		for (int i = 0; i <= N; ++i){
 			edgeList.add(new ArrayList<>());
+			edgeListReverse.add(new ArrayList<>());
 		}
 		
 		for (int m = 0; m < M; ++m)
@@ -105,15 +102,11 @@ public class Main {
 			int c = Integer.parseInt(st.nextToken());
 			
 			edgeList.get(a).add(new Edge(b, c));
+			edgeListReverse.get(b).add(new Edge(a, c));
 		}
 		
-		dijkstra(X, 0);
-		for (int i = 1; i <= N; ++i)
-		{
-			if (i == X)
-				continue;
-			result[i] += dijkstra(i, X);
-		}
+		dijkstra(X, edgeList);
+		dijkstra(X, edgeListReverse);
 		
 		int max = -1;
 		for (int i = 1; i <= N; ++i)
